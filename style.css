@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* border: solid red; */
 }
 
 
@@ -52,9 +53,16 @@ body {
 }
 
 .signin {
+  background-color: #ff7a00;
+  color: white;
+  padding: 10px 30px;
+  border: 2px solid orange;
+  border-radius: 30px;
   text-decoration: none;
-  color: #333;
-  font-weight: 500;
+  font-weight: 450;
+  display: inline-block;
+  transition: 0.3s ease;
+
 }
 
 /* BUTTONS */
@@ -228,6 +236,17 @@ body {
   .hero-content h1 {
     font-size: 40px;
   }
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .btn-primary{
+    text-align: center;
+  }
+  .btn-outline{
+    text-align: center;
+  }
 
   .top-card,
   .bottom-card {
@@ -241,6 +260,10 @@ body {
   display: none;
   font-size: 26px;
   cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 8px;
+  line-height: 1;
 }
 
 /* MOBILE NAV */
@@ -302,7 +325,7 @@ body {
 .journey-header p {
   color: #666;
   font-size: 18px;
-  inline-size: 500px;
+  /* inline-size: 500px; */
   margin: auto;
 }
 
@@ -977,7 +1000,7 @@ body {
   }
 
   .star {
-    right: -350px;
+    right: -260px;
     /* top: -50px; */
   }
 

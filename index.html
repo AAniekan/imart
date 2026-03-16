@@ -18,20 +18,20 @@
     <div class="container nav-wrapper">
       <div class="logo">iMart.ng</div>
 
-      <nav class="nav-links">
+      <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
         <a href="#">Campus Market</a>
         <a href="#">Vendor Market</a>
         <a href="#">Service Market</a>
       </nav>
 
-      <div class="nav-actions">
+      <div class="nav-actions" id="navActions">
         <a href="#" class="signin">Sign In</a>
         <a href="#" class="btn-primary small">Get Started</a>
       </div>
       <!-- Hamburger -->
-      <div class="menu-toggle" id="menuToggle">
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks navActions">
         ☰
-      </div>
+      </button>
     </div>
   </header>
 
@@ -895,12 +895,28 @@
   <script>
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
-    const navActions = document.querySelector('.nav-actions');
+    const navActions = document.getElementById('navActions');
 
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
+    const toggleMenu = () => {
+      const isOpen = navLinks.classList.toggle('active');
       navActions.classList.toggle('active');
-    });
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      menuToggle.textContent = isOpen ? '✕' : '☰';
+    };
+
+    menuToggle.addEventListener('click', toggleMenu);
+
+    // Close dropdown when a navigation link is selected (mobile)
+    const closeOnNavClick = (event) => {
+      if (event.target.matches('.nav-links a') || event.target.matches('.nav-actions a')) {
+        navLinks.classList.remove('active');
+        navActions.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.textContent = '☰';
+      }
+    };
+
+    document.addEventListener('click', closeOnNavClick);
   </script>
 </body>
 
